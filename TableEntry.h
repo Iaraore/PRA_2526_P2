@@ -19,7 +19,7 @@ class TableEntry {
         // Constructor solo con clave
         TableEntry(std::string key) : key(key), value() {}
 
-        // Coonstructor clave vacía
+        // Constructor clave vacía
         TableEntry() : key(""), value() {}
 
         // Comparación de igualdad: Solo mira la clave
@@ -30,6 +30,16 @@ class TableEntry {
         // Comparación de desigualdad: Solo mira la clave
         friend bool operator!=(const TableEntry<V> &te1, const TableEntry<V> &te2) {
             return te1.key != te2.key;
+        }
+
+        // Operador de menor que: Compara por clave (orden lexicográfico)
+        friend bool operator<(const TableEntry<V> &te1, const TableEntry<V> &te2) {
+            return te1.key < te2.key;
+        }
+
+        // Operador de mayor que: Compara por clave (orden lexicográfico)
+        friend bool operator>(const TableEntry<V> &te1, const TableEntry<V> &te2) {
+            return te1.key > te2.key;
         }
 
         // Operador de salida: Imprime el par clave->valor
